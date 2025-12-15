@@ -8,7 +8,7 @@ function chatBot() {
             <p>${message}</p>
         </div>
         `;
-        console.log(typeof message)
+    console.log(typeof message)
     if (message.includes("image")) {
         let typings = document.getElementById("chatBox");
         typings.innerHTML += `
@@ -22,8 +22,8 @@ function chatBot() {
             latestTyping.remove();
         }, 2000);
     }
-    else{
-       let typings = document.getElementById("chatBox");
+    else {
+        let typings = document.getElementById("chatBox");
         typings.innerHTML += `
          <div class="typing">
             <p>Typing....</p>
@@ -33,7 +33,7 @@ function chatBot() {
 
         setTimeout(function () {
             latestTyping.remove();
-        }, 2000);  
+        }, 2000);
     }
 
     setTimeout(function () {
@@ -45,7 +45,7 @@ function chatBot() {
         const condition = ["kia hal hai", "kiya hal hai", "kya haal hai", "how are you", "how r you", "how are u", "kya haal chaal hai", "kya haal chal hai", "how is it going", "how's it going", "salam", "assalamualaikum", "hello", "hi"];
         const web = ["mujhay web development kay baray main batao", "mujhay web development kay baray mein batao", "mujhe web development ke bare mein batao", "web development kiya hai", "web development kya hai", "web dev kya hai", "web dev kiya hai", "web development kya hota hai", "web development ka matlab kya hai", "mujhay webdevelopment kay baray main batao", "mujhay webdevelopment kay baray mein batao", "webdevelopment kiya hai", "webdevelopment kya hai", "what is web development", "what is webdevelopment", "tell me about web development", "guide me about web development", "guide me about webdevelopment", "explain web development", "can you explain web development", "web development explain karo", "web development seekhna hai", "how to learn web development", "web development ka scope kya hai", "web development career", "web developer kya karta hai"];
         const webDetails = ["is kay baray main batao", "mujhay is kay baray main batao", "mein yeh kaise seekh sakta hoon", "mein yai kaisay seekh sakta hoon", "mujhay yeh kaise seekhna chahiye", "mujhe web development kaise seekhna chahiye", "web development kaise seekhein", "web development kaise seekhi jati hai", "web dev kaise seekhein", "web dev seekhne ka tareeqa", "how can i learn this", "how can i learn web development", "how to learn web development", "how should i learn web development", "best way to learn web development", "guide me how to learn web development", "web development seekhne ka roadmap", "web development kaise start karun"];
-        const image = ["laptop image","mujhay laptop images do"]
+        const image = ["laptop image", "mujhay laptop images do"]
         if (salam.includes(messagelo)) {
             document.getElementById("chatBox").innerHTML += `
         <div class="bot">
@@ -115,3 +115,11 @@ function chatBot() {
     }, 2000)
     document.getElementById("message").value = "";
 }
+
+
+message.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        chatBot();               
+        event.preventDefault();  
+    }
+});
