@@ -56,7 +56,10 @@ body {
     text-align: left;
     margin-bottom: 8px;
 }
-
+.bot img{
+    width: 100%;
+    height: 200px;
+}
 .bot p {
     display: inline-block;
     background: #eee;

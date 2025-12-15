@@ -8,18 +8,33 @@ function chatBot() {
             <p>${message}</p>
         </div>
         `;
-    let typings = document.getElementById("chatBox");
-    typings.innerHTML += `
+        console.log(typeof message)
+    if (message.includes("image")) {
+        let typings = document.getElementById("chatBox");
+        typings.innerHTML += `
+         <div class="typing">
+            <p>Processing....</p>
+        </div>`
+        let allTyping = document.getElementsByClassName("typing");
+        let latestTyping = allTyping[allTyping.length - 1];
+
+        setTimeout(function () {
+            latestTyping.remove();
+        }, 2000);
+    }
+    else{
+       let typings = document.getElementById("chatBox");
+        typings.innerHTML += `
          <div class="typing">
             <p>Typing....</p>
         </div>`
-    let allTyping = document.getElementsByClassName("typing");
-    let latestTyping = allTyping[allTyping.length - 1]; 
+        let allTyping = document.getElementsByClassName("typing");
+        let latestTyping = allTyping[allTyping.length - 1];
 
-    setTimeout(function () {
-        latestTyping.remove();
-    }, 2000);
-
+        setTimeout(function () {
+            latestTyping.remove();
+        }, 2000);  
+    }
 
     setTimeout(function () {
 
@@ -29,7 +44,8 @@ function chatBot() {
         const dayQuestion = ["aj kiya din hai", "aj kya din hai", "aaj ka din kya hai", "aaj ka din kya hai?", "aj ka din kya hai", "aj ka din kya hai?", "aaj ka din batao", "aaj ka din batao?", "aaj day kya hai", "aaj ki tareekh kya hai", "aj ki tareekh kya hai", "aaj ka day batao", "what day is today", "what day is it today", "tell me the day today", "which day is today", "today what day is it", "today's day", "can you tell me what day it is"];
         const condition = ["kia hal hai", "kiya hal hai", "kya haal hai", "how are you", "how r you", "how are u", "kya haal chaal hai", "kya haal chal hai", "how is it going", "how's it going", "salam", "assalamualaikum", "hello", "hi"];
         const web = ["mujhay web development kay baray main batao", "mujhay web development kay baray mein batao", "mujhe web development ke bare mein batao", "web development kiya hai", "web development kya hai", "web dev kya hai", "web dev kiya hai", "web development kya hota hai", "web development ka matlab kya hai", "mujhay webdevelopment kay baray main batao", "mujhay webdevelopment kay baray mein batao", "webdevelopment kiya hai", "webdevelopment kya hai", "what is web development", "what is webdevelopment", "tell me about web development", "guide me about web development", "guide me about webdevelopment", "explain web development", "can you explain web development", "web development explain karo", "web development seekhna hai", "how to learn web development", "web development ka scope kya hai", "web development career", "web developer kya karta hai"];
-        const webDetails = ["mujhay is kay baray main batao", "mein yeh kaise seekh sakta hoon", "mein yai kaisay seekh sakta hoon", "mujhay yeh kaise seekhna chahiye", "mujhe web development kaise seekhna chahiye", "web development kaise seekhein", "web development kaise seekhi jati hai", "web dev kaise seekhein", "web dev seekhne ka tareeqa", "how can i learn this", "how can i learn web development", "how to learn web development", "how should i learn web development", "best way to learn web development", "guide me how to learn web development", "web development seekhne ka roadmap", "web development kaise start karun"];
+        const webDetails = ["is kay baray main batao", "mujhay is kay baray main batao", "mein yeh kaise seekh sakta hoon", "mein yai kaisay seekh sakta hoon", "mujhay yeh kaise seekhna chahiye", "mujhe web development kaise seekhna chahiye", "web development kaise seekhein", "web development kaise seekhi jati hai", "web dev kaise seekhein", "web dev seekhne ka tareeqa", "how can i learn this", "how can i learn web development", "how to learn web development", "how should i learn web development", "best way to learn web development", "guide me how to learn web development", "web development seekhne ka roadmap", "web development kaise start karun"];
+        const image = ["laptop image"]
         if (salam.includes(messagelo)) {
             document.getElementById("chatBox").innerHTML += `
         <div class="bot">
@@ -75,6 +91,20 @@ function chatBot() {
          </p>
         </div>`
         }
+        else if (image.includes(messagelo)) {
+            let a = ["https://tse2.mm.bing.net/th/id/OIP.30y29wUXqS17aMfWTdQ7rQHaE8?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3", "https://img.freepik.com/premium-photo/open-silver-laptop-wooden-table_392895-23667.jpg", "https://tse2.mm.bing.net/th/id/OIP.dMTX675UkcJ27ZZLVWmSpwHaFQ?cb=ucfimg2&ucfimg=1&w=728&h=517&rs=1&pid=ImgDetMain&o=7&rm=3", "https://media.istockphoto.com/photos/blank-slim-laptop-3d-render-picture-id481104973?k=6&m=481104973&s=612x612&w=0&h=CTbRd59Hk7fXBMzdrEAK9D_3WQ0yWyWOj2DSkGS3C4s=", "https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg", "https://img.freepik.com/premium-photo/purple-laptop-3d-illustration-black-desk-laptop-computer-with-color-pink-purple-light-display_37129-951.jpg?w=900", "https://images.freeimages.com/images/large-previews/c00/laptop-mockup-design-0410-5709187.jpg?fmt=webp&w=500", "https://images.squarespace-cdn.com/content/v1/5e5526c686f8153e0ce85e33/1591283822405-HFOYNCFRRKT1ZMWBZY72/942_72dpi.jpg", "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3507374/black-laptop-icon-md.png", "https://cdn4.vectorstock.com/i/1000x1000/66/23/laptop-vector-38586623.jpg"]
+
+            document.getElementById("chatBox").innerHTML += `
+        <div class="bot">
+           <img src="${a[Math.floor(Math.random() * a.length)]}" alt="">
+        </div>`
+        }
+
+
+
+
+
+
         else {
             document.getElementById("chatBox").innerHTML += `
         <div class="bot">
@@ -82,6 +112,6 @@ function chatBot() {
         </div>`
         }
 
-    },2000)
+    }, 2000)
     document.getElementById("message").value = "";
 }
