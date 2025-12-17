@@ -1,5 +1,5 @@
 function chatBot() {
-
+    let input = document.getElementById("message");
     let message = document.getElementById("message").value;
     let messagelo = message.toLowerCase()
     if (message == "") return;
@@ -8,6 +8,7 @@ function chatBot() {
             <p>${message}</p>
         </div>
         `;
+        input.disabled = true;
     console.log(typeof message)
     if (message.includes("image")) {
         let typings = document.getElementById("chatBox");
@@ -111,7 +112,8 @@ function chatBot() {
             <p>mujhay samjh nahin aya ap kiya keh rahay hain</p>
         </div>`
         }
-
+     input.disabled = false;
+     input.focus();
     }, 2000)
     document.getElementById("message").value = "";
 }
